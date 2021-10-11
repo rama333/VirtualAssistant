@@ -8,7 +8,6 @@ import (
 	"github.com/wcharczuk/go-chart/v2"
 	"io"
 	"log"
-	"net"
 	"os"
 	"time"
 )
@@ -18,13 +17,13 @@ const seconds = 5
 
 func main() {
 
-	conn, err := net.Dial("tcp", "127.0.0.1:8081")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer conn.Close()
+	//conn, err := net.Dial("tcp", "127.0.0.1:8081")
+	//
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//
+	//defer conn.Close()
 
 	//stop1 := make(chan struct{})
 	//
@@ -116,9 +115,9 @@ func main() {
 
 				log.Println("ok")
 
-				t := fmt.Sprintf("%v", buffer1)
-				t1 := t[1 : len(t)-1]
-				fmt.Fprintf(conn, fmt.Sprintf("%s", t1) + "\n")
+				//t := fmt.Sprintf("%v", buffer1)
+				//t1 := t[1 : len(t)-1]
+				//fmt.Fprintf(conn, fmt.Sprintf("%s", t1) + "\n")
 
 				//log.Println(t1)
 

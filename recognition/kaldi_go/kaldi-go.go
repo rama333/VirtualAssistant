@@ -80,6 +80,10 @@ func (e *Encoder) Recognition(file string) (string, error)  {
 		"ark:- --acoustic-scale=0.1",
 	}
 
+
+
+
+
 	ResultConfig(arg[:] ...)
 
 	cmd := exec.Command(arg[0], arg[1:] ...)
@@ -98,6 +102,7 @@ func (e *Encoder) Recognition(file string) (string, error)  {
 		return "", err
 	}
 
+	logrus.Info(stderr.String())
 
 
 	return strings.Split(strings.Split(stderr.String(),"utterance-id1 ")[3], "LOG")[0], nil

@@ -1,10 +1,18 @@
 package main
 
-import server "VirtualAssistant/server"
+import (
+	"log"
+	"smitClient/server"
+)
 
 func main()  {
-	s := server.NewServer(":8081", 44100)
 
-	s.Start()
+	h, err := server.New(":8088", 44100)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	h.Run()
 
 }
