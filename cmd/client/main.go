@@ -9,6 +9,7 @@ import (
 	"github.com/zenwerk/go-wave"
 	"os"
 	"path/filepath"
+	"smitClient/synthesize"
 	"sync"
 	"time"
 )
@@ -122,6 +123,8 @@ func newClient(delay time.Duration) (*Client, error) {
 
 		for {
 
+			speech := synthesize.Speech{Folder: "", Language: synthesize.Russia, Synthesize: synthesize.MPlayer{}}
+
 			var recData RecognitionText
 
 			_, mes, err := client.connect.ReadMessage()
@@ -138,6 +141,12 @@ func newClient(delay time.Duration) (*Client, error) {
 
 			logrus.Info("current data: ", recData.CurrentText)
 			logrus.Info("full text: ", recData.FullText)
+
+			err = speech.Speak(recData.CurrentText)
+
+			if err != nil {
+				logrus.Error(err)
+			}
 		}
 	}(e)
 

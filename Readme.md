@@ -1,0 +1,1 @@
+The project is in active development. The kaldi engine acts as a recognition. At the moment, I am implementing the transmission of speech in real time to the server for further recognition and processing (NLP for golang)) It's worth trying something cool to implement)
